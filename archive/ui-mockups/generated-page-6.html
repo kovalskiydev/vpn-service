@@ -1,0 +1,421 @@
+<html lang="ru"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VPN Admin Panel - Настройки</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 flex h-screen overflow-hidden antialiased selection:bg-orange-100 selection:text-orange-900">
+
+    <!-- Sidebar -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col hidden md:flex z-10">
+        <!-- Logo -->
+        <div class="h-16 flex items-center px-6 border-b border-gray-100">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-orange-500 flex items-center justify-center text-white">
+                    <iconify-icon icon="solar:shield-keyhole-linear" style="font-size: 1.25rem;"></iconify-icon>
+                </div>
+                <span class="text-lg font-semibold tracking-tight uppercase">VPN</span>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto no-scrollbar py-4 px-3 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">
+                <iconify-icon icon="solar:widget-linear" style="font-size: 1.25rem;"></iconify-icon>
+                Обзор
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">
+                <iconify-icon icon="solar:global-linear" style="font-size: 1.25rem;"></iconify-icon>
+                Локации
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">
+                <iconify-icon icon="solar:card-linear" style="font-size: 1.25rem;"></iconify-icon>
+                Подписки
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">
+                <iconify-icon icon="solar:users-group-rounded-linear" style="font-size: 1.25rem;"></iconify-icon>
+                Клиенты
+            </a>
+            
+            <div class="pt-4 pb-2">
+                <div class="px-3 text-xs font-medium text-gray-400 uppercase tracking-wider">Система</div>
+            </div>
+            
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">
+                <iconify-icon icon="solar:chart-linear" style="font-size: 1.25rem;"></iconify-icon>
+                Статистика
+            </a>
+            <!-- Active State -->
+            <a href="#" class="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md bg-orange-50 text-orange-600">
+                <iconify-icon icon="solar:settings-linear" style="font-size: 1.25rem;"></iconify-icon>
+                Настройки
+            </a>
+        </nav>
+
+        <!-- User Profile -->
+        <div class="p-4 border-t border-gray-100">
+            <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Admin&amp;backgroundColor=f3f4f6" alt="Admin" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-gray-900 truncate">Администратор</p>
+                    <p class="text-xs text-gray-500 truncate">admin@vpn.core</p>
+                </div>
+                <button class="text-gray-400 hover:text-gray-600">
+                    <iconify-icon icon="solar:logout-2-linear" style="font-size: 1.25rem;"></iconify-icon>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
+        
+        <!-- Header -->
+        <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 z-0">
+            <div class="flex items-center gap-4 md:hidden">
+                <button class="text-gray-500 hover:text-gray-900">
+                    <iconify-icon icon="solar:hamburger-menu-linear" style="font-size: 1.5rem;"></iconify-icon>
+                </button>
+                <div class="w-6 h-6 rounded bg-orange-500 flex items-center justify-center text-white">
+                    <iconify-icon icon="solar:shield-keyhole-linear" style="font-size: 1rem;"></iconify-icon>
+                </div>
+            </div>
+
+            <div class="hidden md:flex items-center gap-2 text-sm text-gray-500">
+                <span class="hover:text-gray-900 cursor-pointer transition-colors">Панель</span>
+                <span>/</span>
+                <span class="text-gray-900 font-medium">Настройки</span>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <div class="relative hidden sm:block">
+                    <iconify-icon icon="solar:magnifer-linear" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" style="font-size: 1.25rem;"></iconify-icon>
+                    <input type="text" placeholder="Поиск настроек..." class="w-64 pl-10 pr-4 py-2 bg-gray-50 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all placeholder-gray-400">
+                </div>
+                <button class="relative p-2 text-gray-400 hover:text-gray-600 transition-colors rounded-lg hover:bg-gray-50">
+                    <iconify-icon icon="solar:bell-linear" style="font-size: 1.25rem;"></iconify-icon>
+                    <span class="absolute top-2 right-2 w-2 h-2 bg-orange-500 rounded-full border-2 border-white"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Scrollable Area - Settings -->
+        <div class="flex-1 overflow-y-auto p-6 lg:p-8">
+            <div class="max-w-4xl mx-auto space-y-8">
+                
+                <!-- Page Header -->
+                <div>
+                    <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Настройки системы</h1>
+                    <p class="text-sm text-gray-500 mt-1">Управление конфигурацией VPN, скриптами автоматического развертывания и API.</p>
+                </div>
+
+                <!-- Settings Tabs Navigation -->
+                <div id="settingsTabs" class="flex border-b border-gray-200 overflow-x-auto no-scrollbar">
+                    <button data-tab="general" class="px-4 py-2.5 border-b-2 border-orange-500 text-sm font-medium text-orange-600 whitespace-nowrap">Общее</button>
+                    <button data-tab="deploy" class="px-4 py-2.5 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-colors whitespace-nowrap">Деплой</button>
+                    <button data-tab="security" class="px-4 py-2.5 border-b-2 border-transparent text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 transition-colors whitespace-nowrap">Безопасность</button>
+                </div>
+
+                <!-- Settings Content -->
+                <form id="settingsForm" class="space-y-6">
+                    <section data-panel="general" class="space-y-6">
+                        <div class="bg-white rounded-xl border border-gray-200 shadow-[0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden">
+                            <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
+                                <h2 class="text-base font-semibold text-gray-900">Базовые параметры сервиса</h2>
+                                <p class="text-xs text-gray-500 mt-0.5">Общие настройки панели и значений по умолчанию.</p>
+                            </div>
+                            <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Название сервиса</label>
+                                    <input name="general_service_name" type="text" value="VPN Core" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Часовой пояс</label>
+                                    <input name="general_timezone" type="text" value="UTC" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Язык панели</label>
+                                    <select name="general_language" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                        <option value="ru" selected>Русский</option>
+                                        <option value="en">English</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">E-mail администратора</label>
+                                    <input name="general_admin_email" type="email" value="admin@vpn.core" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">DNS сервер 1</label>
+                                    <input name="general_dns1" type="text" value="1.1.1.1" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">DNS сервер 2</label>
+                                    <input name="general_dns2" type="text" value="8.8.8.8" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Порт по умолчанию</label>
+                                    <input name="general_default_port" type="number" value="443" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">MTU по умолчанию</label>
+                                    <input name="general_default_mtu" type="number" value="1420" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section data-panel="deploy" class="hidden space-y-6">
+                        <div class="bg-white rounded-xl border border-gray-200 shadow-[0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden">
+                            <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50/50">
+                                <div>
+                                    <h2 class="text-base font-semibold text-gray-900">Bash-скрипт инициализации (Pre-install)</h2>
+                                    <p class="text-xs text-gray-500 mt-0.5">Выполняется на чистом Ubuntu/Debian сервере перед развертыванием.</p>
+                                </div>
+                                <button id="copyDeployScriptBtn" type="button" class="hidden sm:flex text-sm font-medium text-orange-600 hover:text-orange-700 items-center gap-1.5 transition-colors">
+                                    <iconify-icon icon="solar:copy-linear" style="font-size: 1.1rem;"></iconify-icon>
+                                    Скопировать
+                                </button>
+                            </div>
+                            <div class="p-6">
+                                <div class="relative rounded-lg bg-[#0d1117] overflow-hidden font-mono text-sm border border-gray-800 shadow-inner">
+                                    <div class="flex items-center px-4 py-2 bg-gray-800/80 border-b border-gray-700/50 text-xs text-gray-400 gap-2">
+                                        <span class="w-2.5 h-2.5 rounded-full bg-red-500"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
+                                        <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span>
+                                        <span class="ml-2">setup_node.sh</span>
+                                    </div>
+                                    <textarea id="deployScript" name="deploy_script" class="w-full h-56 bg-transparent text-gray-300 p-4 focus:outline-none resize-y font-mono text-xs sm:text-sm leading-relaxed" spellcheck="false">#!/bin/bash
+set -e
+apt-get update && apt-get upgrade -y
+apt-get install -y curl wget jq iptables-persistent fail2ban ufw
+sysctl -w net.ipv4.ip_forward=1
+curl -fsSL https://get.docker.com | sh
+echo "Node prepared"</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white rounded-xl border border-gray-200 shadow-[0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden">
+                            <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
+                                <h2 class="text-base font-semibold text-gray-900">Параметры деплоя</h2>
+                                <p class="text-xs text-gray-500 mt-0.5">Управление политикой автоматического развертывания.</p>
+                            </div>
+                            <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">SSH Timeout (сек)</label>
+                                    <input name="deploy_ssh_timeout" type="number" value="20" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Retry попыток</label>
+                                    <input name="deploy_retries" type="number" value="2" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Post-deploy check command</label>
+                                    <input name="deploy_healthcheck_cmd" type="text" value="systemctl is-active xray" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                                <div class="md:col-span-2 pt-3 border-t border-gray-100 flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Автоматический rollback</p>
+                                        <p class="text-xs text-gray-500 mt-0.5">Откатить изменения если post-check не пройден.</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer ml-4">
+                                        <input name="deploy_auto_rollback" type="checkbox" class="sr-only peer" checked="">
+                                        <div class="w-10 h-5.5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-[18px] peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4.5 after:w-4.5 after:transition-all peer-checked:bg-orange-500 transition-colors"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section data-panel="security" class="hidden space-y-6">
+                        <div class="bg-white rounded-xl border border-gray-200 shadow-[0_1px_2px_rgba(0,0,0,0.02)] overflow-hidden">
+                            <div class="px-6 py-4 border-b border-gray-100 bg-gray-50/50">
+                                <h2 class="text-base font-semibold text-gray-900">Доступ к панели</h2>
+                                <p class="text-xs text-gray-500 mt-0.5">Базовые настройки защиты админ-доступа.</p>
+                            </div>
+                            <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-5">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Новый пароль администратора</label>
+                                    <input name="security_new_password" type="password" placeholder="Введите новый пароль" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">Подтверждение пароля</label>
+                                    <input name="security_confirm_password" type="password" placeholder="Повторите пароль" class="w-full px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1.5">IP Allowlist</label>
+                                    <textarea name="security_ip_allowlist" class="w-full h-24 px-3 py-2 bg-white border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-orange-500/20 focus:border-orange-500 transition-all text-gray-900 shadow-sm" placeholder="1.2.3.4/32&#10;10.0.0.0/24"></textarea>
+                                    <p class="text-xs text-gray-500 mt-1.5">Оставьте пустым, чтобы разрешить доступ с любых IP.</p>
+                                </div>
+                                <div class="md:col-span-2 pt-3 border-t border-gray-100 flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Двухфакторная аутентификация (2FA)</p>
+                                        <p class="text-xs text-gray-500 mt-0.5">Требовать одноразовый код при входе.</p>
+                                    </div>
+                                    <label class="relative inline-flex items-center cursor-pointer ml-4">
+                                        <input name="security_enable_2fa" type="checkbox" class="sr-only peer">
+                                        <div class="w-10 h-5.5 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-[18px] peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4.5 after:w-4.5 after:transition-all peer-checked:bg-orange-500 transition-colors"></div>
+                                    </label>
+                                </div>
+                                <div class="md:col-span-2 flex items-center justify-between">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Разлогинить все сессии</p>
+                                        <p class="text-xs text-gray-500 mt-0.5">Сбросить активные сессии админов кроме текущей.</p>
+                                    </div>
+                                    <button id="revokeSessionsBtn" type="button" class="px-4 py-2 bg-red-50 border border-red-200 rounded-lg text-sm font-medium text-red-600 hover:bg-red-100 transition-colors">Сбросить сессии</button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Actions -->
+                    <div class="flex flex-col-reverse sm:flex-row justify-end gap-3 pt-2">
+                        <button id="cancelSettingsBtn" type="button" class="px-4 py-2.5 bg-white border border-gray-200 rounded-lg text-sm font-medium text-gray-700 hover:bg-gray-50 transition-colors shadow-sm w-full sm:w-auto text-center">
+                            Отмена
+                        </button>
+                        <button id="saveSettingsBtn" type="submit" class="px-6 py-2.5 bg-orange-500 border border-transparent rounded-lg text-sm font-medium text-white hover:bg-orange-600 transition-colors shadow-sm shadow-orange-500/20 flex items-center justify-center gap-2 w-full sm:w-auto">
+                            <iconify-icon icon="solar:diskette-linear" style="font-size: 1.25rem;"></iconify-icon>
+                            Сохранить изменения
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Spacer -->
+            <div class="h-12"></div>
+        </div>
+    </main>
+
+
+<script>
+(() => {
+  const STORAGE_KEY = "vpn_settings_v1";
+  const tabsRoot = document.getElementById("settingsTabs");
+  const form = document.getElementById("settingsForm");
+  const saveBtn = document.getElementById("saveSettingsBtn");
+  const cancelBtn = document.getElementById("cancelSettingsBtn");
+  const copyBtn = document.getElementById("copyDeployScriptBtn");
+  const revokeSessionsBtn = document.getElementById("revokeSessionsBtn");
+  const panels = Array.from(document.querySelectorAll("[data-panel]"));
+  const tabButtons = Array.from(tabsRoot.querySelectorAll("button[data-tab]"));
+
+  function setTab(tab) {
+    panels.forEach((panel) => {
+      panel.classList.toggle("hidden", panel.getAttribute("data-panel") !== tab);
+    });
+    tabButtons.forEach((btn) => {
+      const active = btn.getAttribute("data-tab") === tab;
+      btn.classList.toggle("border-orange-500", active);
+      btn.classList.toggle("text-orange-600", active);
+      btn.classList.toggle("border-transparent", !active);
+      btn.classList.toggle("text-gray-500", !active);
+    });
+  }
+
+  function serializeForm() {
+    const data = {};
+    const fd = new FormData(form);
+    for (const [key, value] of fd.entries()) data[key] = String(value);
+    form.querySelectorAll("input[type='checkbox']").forEach((cb) => {
+      data[cb.name] = cb.checked;
+    });
+    return data;
+  }
+
+  function fillForm(data) {
+    if (!data || typeof data !== "object") return;
+    Object.entries(data).forEach(([k, v]) => {
+      const el = form.elements.namedItem(k);
+      if (!el) return;
+      if (el.type === "checkbox") {
+        el.checked = Boolean(v);
+      } else {
+        el.value = String(v);
+      }
+    });
+  }
+
+  function loadSettings() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+      return JSON.parse(raw);
+    } catch {
+      return null;
+    }
+  }
+
+  function validateSecurity(data) {
+    const p1 = data.security_new_password || "";
+    const p2 = data.security_confirm_password || "";
+    if ((p1 || p2) && p1 !== p2) {
+      alert("Пароли не совпадают");
+      setTab("security");
+      return false;
+    }
+    if (p1 && p1.length < 8) {
+      alert("Пароль должен быть не короче 8 символов");
+      setTab("security");
+      return false;
+    }
+    return true;
+  }
+
+  tabsRoot.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-tab]");
+    if (!btn) return;
+    setTab(btn.getAttribute("data-tab"));
+  });
+
+  copyBtn.addEventListener("click", async () => {
+    const script = document.getElementById("deployScript").value || "";
+    try {
+      await navigator.clipboard.writeText(script);
+      alert("Скрипт скопирован");
+    } catch {
+      alert("Не удалось скопировать скрипт");
+    }
+  });
+
+  revokeSessionsBtn.addEventListener("click", () => {
+    alert("Все сессии сброшены (демо).");
+  });
+
+  cancelBtn.addEventListener("click", () => {
+    const saved = loadSettings();
+    if (saved) fillForm(saved);
+    alert("Изменения отменены");
+  });
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = serializeForm();
+    if (!validateSecurity(data)) return;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    alert("Настройки сохранены");
+  });
+
+  const saved = loadSettings();
+  if (saved) fillForm(saved);
+  setTab("general");
+})();
+</script>
+</body></html>

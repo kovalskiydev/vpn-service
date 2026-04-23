@@ -1,0 +1,30 @@
+services:
+  vpn-panel:
+    build:
+      context: .
+      dockerfile: web-admin/Dockerfile
+    container_name: vpn-panel
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      HOST: 0.0.0.0
+      PORT: 18081
+      DB_PATH: /app/web-admin/data/panel.db
+    volumes:
+      - ./web-admin/data:/app/web-admin/data
+    ports:
+      - "${PANEL_BIND_IP:-127.0.0.1}:${PANEL_PORT:-18081}:18081"
+
+  vpn-telegram-bot:
+    build:
+      context: .
+      dockerfile: web-admin/Dockerfile
+    container_name: vpn-telegram-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    command: ["python", "/app/web-admin/telegram_key_bot.py"]
+    depends_on:
+      - vpn-panel
+    profiles: ["bot"]

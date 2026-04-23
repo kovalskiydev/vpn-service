@@ -1,0 +1,14 @@
+.DS_Store
+**/.DS_Store
+DerivedData/
+.build/
+*.xcworkspace
+__pycache__/
+*.pyc
+.env
+*.local.env
+web-admin/data/*.db-wal
+web-admin/data/*.db-shm
+web-admin/data/panel.legacy-*.db
+web-admin/data/panel.legacy-*.db-wal
+web-admin/data/panel.legacy-*.db-shm

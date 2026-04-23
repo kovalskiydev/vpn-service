@@ -1,0 +1,9 @@
+__pycache__/
+data/*.db
+*.pyc
+.DS_Store
+data/*.db-wal
+data/*.db-shm
+data/panel.legacy-*.db
+data/panel.legacy-*.db-wal
+data/panel.legacy-*.db-shm
